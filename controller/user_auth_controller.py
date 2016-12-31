@@ -14,9 +14,9 @@ class UserRegister(BaseController):
             user = User.register(email, password, name, phone)
             if user:
                 response = {
-                    "status": "success",
-                    "message": "Successfully registering a new user",
-                    "accessToken": TokenHashing.make_secure_value(str(user.key.id()))
+                    "data": {
+                        "access_token": TokenHashing.make_secure_value(str(user.key.id())),
+                    }
                 }
                 self._response_json(response)
             else:
@@ -33,9 +33,9 @@ class UserLogin(BaseController):
         user = User.login(username, password)
         if user:
             response = {
-                "status": "success",
-                "message": "Login Successfully",
-                "accessToken": TokenHashing.make_secure_value(str(user.key.id()))
+                "data": {
+                    "access_token": TokenHashing.make_secure_value(str(user.key.id())),
+                }
             }
             self._response_json(response)
         else:
@@ -49,8 +49,9 @@ class UserLogout(BaseController):
         status = User.logout(access_token)
         if status:
             response = {
-                "status": "success",
-                "message": "Logout Successfully",
+                "data": {
+                    "message": "Logout Successfully",
+                }
             }
             self._response_json(response)
         else:
