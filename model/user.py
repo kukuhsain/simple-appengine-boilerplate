@@ -3,12 +3,11 @@ from util.password_hashing import PasswordHashing
 from util.token_hashing import TokenHashing
 
 
-class UserGuest(ndb.Model):
+class User(ndb.Model):
     email = ndb.StringProperty(required=True)
     password = ndb.StringProperty(required=True)
     name = ndb.StringProperty()
     phone = ndb.StringProperty()
-    image_url = ndb.StringProperty()
     session = ndb.BooleanProperty()
     created_date = ndb.DateTimeProperty(auto_now_add=True)
 
