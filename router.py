@@ -1,7 +1,7 @@
 import webapp2
 
-from controller.hello_controller import HelloWorld
+from controller.home_controller import Home
 
 app = webapp2.WSGIApplication([
-    ("/", HelloWorld)
+    ("/", Home)
 ], debug=True)
